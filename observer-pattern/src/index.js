@@ -1,4 +1,14 @@
-import { handleFormSubmit } from "./handlers/formHandler.js";
+import TodoList from "./model/TodoList.js";
+import UpdateTableObs from "./observers/UpdateTableObs.js";
 
-const form = document.getElementById("todo-form");
-handleFormSubmit(form);
+//link between subject and observers
+const todoList = new TodoList();
+const updateTable = new UpdateTableObs(todoList);
+todoList.subscribe(updateTable);
+
+// Create todo
+todoList.createTodo("Test", 1);
+
+// Update todo
+todoList.markTodoAsCompleted("Test");
+

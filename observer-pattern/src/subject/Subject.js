@@ -1,6 +1,5 @@
-/*Observer pattern */
+class Subject {
 
-class TaskSubject {
     constructor() {
         this.observers = [];
     }
@@ -13,10 +12,9 @@ class TaskSubject {
         this.observers = this.observers.filter(obs => obs != observer);
     }
 
-    notify(data) {
-        this.observers.forEach(observer => observer(data))
+    notify() {
+        this.observers.forEach(obs => obs.update());
     }
 }
 
-
-export default TaskSubject;
+export default Subject;
